@@ -2,19 +2,25 @@
  * Home: Greater Guitars — Hybrid cinematic + business site
  *
  * Structure:
- * 1. Cinematic hero (3D vibrating strings + brand statement)
+ * 1. Cinematic hero (paint-drip animation + brand statement)
  * 2. Philosophy strip (innovation + history)
- * 3. Product showcase (3 models)
- * 4. Configurator / inquiry form
- * 5. Credentials (Alex's work + musician relationships)
- * 6. Footer
+ * 3. Testimonials (customer trust)
+ * 4. Product showcase (3 models)
+ * 5. Configurator / inquiry form
+ * 6. Craft gallery (workshop + live photos)
+ * 7. YouTube videos (brand content)
+ * 8. Credentials (Alex's work + musician relationships)
+ * 9. Footer
  */
 
 import { useState, useRef } from "react";
 import GrainDripHero from "@/components/GrainDripHero";
+import GrainDripBg from "@/components/GrainDripBg";
 import Logo from "@/components/Logo";
 import ProductCard from "@/components/ProductCard";
 import Configurator from "@/components/Configurator";
+import Testimonials from "@/components/Testimonials";
+import YouTubeVideos from "@/components/YouTubeVideos";
 import Credentials from "@/components/Credentials";
 import Footer from "@/components/Footer";
 import { MODELS } from "@/lib/products";
@@ -158,8 +164,9 @@ export default function Home() {
       {/* ═══════════════════════════════════════════════ */}
       {/* PHILOSOPHY STRIP                               */}
       {/* ═══════════════════════════════════════════════ */}
-      <section className="py-24 px-6" style={{ background: "#0c0a08" }}>
-        <div className="max-w-4xl mx-auto">
+      <section className="relative overflow-hidden py-24 px-6" style={{ background: "#0c0a08" }}>
+        <GrainDripBg />
+        <div className="relative max-w-4xl mx-auto">
           <SectionReveal>
             <div className="grid md:grid-cols-2 gap-16">
               <div>
@@ -247,9 +254,22 @@ export default function Home() {
       <AccentLine />
 
       {/* ═══════════════════════════════════════════════ */}
+      {/* TESTIMONIALS — Customer Trust                  */}
+      {/* ═══════════════════════════════════════════════ */}
+      <section className="relative py-24 px-6" style={{ background: "#0e0c0a" }}>
+        <div className="max-w-5xl mx-auto">
+          <SectionReveal>
+            <Testimonials />
+          </SectionReveal>
+        </div>
+      </section>
+
+      <AccentLine />
+
+      {/* ═══════════════════════════════════════════════ */}
       {/* MODELS — Product Showcase                      */}
       {/* ═══════════════════════════════════════════════ */}
-      <section id="models" className="py-24 px-6" style={{ background: "#0e0c0a" }}>
+      <section id="models" className="relative py-24 px-6" style={{ background: "#0e0c0a" }}>
         <div className="max-w-6xl mx-auto">
           <SectionReveal>
             <div className="text-center mb-16">
@@ -309,7 +329,7 @@ export default function Home() {
       <section
         id="configure"
         ref={configuratorRef}
-        className="py-24 px-6"
+        className="relative py-24 px-6"
         style={{ background: "#0c0a08" }}
       >
         <div className="max-w-3xl mx-auto">
@@ -336,8 +356,9 @@ export default function Home() {
       {/* ═══════════════════════════════════════════════ */}
       {/* CRAFT GALLERY — Workshop + Live                */}
       {/* ═══════════════════════════════════════════════ */}
-      <section className="py-24 px-6" style={{ background: "#0e0c0a" }}>
-        <div className="max-w-5xl mx-auto">
+      <section className="relative overflow-hidden py-24 px-6" style={{ background: "#0e0c0a" }}>
+        <GrainDripBg />
+        <div className="relative max-w-5xl mx-auto">
           <SectionReveal>
             <div className="text-center mb-16">
               <p
@@ -417,10 +438,24 @@ export default function Home() {
       <AccentLine />
 
       {/* ═══════════════════════════════════════════════ */}
+      {/* YOUTUBE — Brand Content                        */}
+      {/* ═══════════════════════════════════════════════ */}
+      <section id="videos" className="relative py-24 px-6" style={{ background: "#0c0a08" }}>
+        <div className="max-w-5xl mx-auto">
+          <SectionReveal>
+            <YouTubeVideos />
+          </SectionReveal>
+        </div>
+      </section>
+
+      <AccentLine />
+
+      {/* ═══════════════════════════════════════════════ */}
       {/* CREDENTIALS                                    */}
       {/* ═══════════════════════════════════════════════ */}
-      <section id="about" className="py-24 px-6" style={{ background: "#0e0c0a" }}>
-        <div className="max-w-5xl mx-auto">
+      <section id="about" className="relative overflow-hidden py-24 px-6" style={{ background: "#0e0c0a" }}>
+        <GrainDripBg />
+        <div className="relative max-w-5xl mx-auto">
           <SectionReveal>
             <Credentials />
           </SectionReveal>

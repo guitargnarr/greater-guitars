@@ -4,7 +4,7 @@ import Logo from "./Logo";
 export default function Footer() {
   return (
     <footer
-      className="py-16 px-6"
+      className="relative py-16 px-6"
       style={{
         background: "#080604",
         borderTop: "1px solid rgba(200, 170, 90, 0.06)",
@@ -59,6 +59,7 @@ export default function Footer() {
               {[
                 { label: "Models", href: "#models" },
                 { label: "Configure", href: "#configure" },
+                { label: "Videos", href: "#videos" },
                 { label: "About Alex", href: "#about" },
               ].map((link) => (
                 <a
