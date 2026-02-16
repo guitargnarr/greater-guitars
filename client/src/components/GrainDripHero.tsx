@@ -1,14 +1,13 @@
 /**
- * GrainDripHero: Animated wood-grain drip lines inspired by the painted guitar body
+ * GrainDripHero: Ink-drip animation — dark ink lines bleeding down on newsprint
  *
- * Visual: Thin vertical lines that slowly flow downward like paint drips or
- * exposed wood grain through black — antique gold on void black.
- * Uses Canvas 2D for performance (no Three.js needed for 2D effect).
+ * Reframed for the Zine Shop aesthetic: think cheap paper, bleeding ink,
+ * xerox artifacts. Some lines tinted safety orange.
  */
 
 import { useRef, useEffect } from "react";
 
-interface GrainLine {
+interface InkLine {
   x: number;
   baseX: number;
   y: number;
@@ -20,13 +19,13 @@ interface GrainLine {
   wobbleAmp: number;
   wobbleFreq: number;
   phase: number;
-  hue: number; // gold range variation
+  isOrange: boolean;
 }
 
 export default function GrainDripHero() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const animRef = useRef<number>(0);
-  const linesRef = useRef<GrainLine[]>([]);
+  const linesRef = useRef<InkLine[]>([]);
   const timeRef = useRef(0);
 
   useEffect(() => {
@@ -48,8 +47,8 @@ export default function GrainDripHero() {
     const initLines = () => {
       const w = window.innerWidth;
       const h = window.innerHeight;
-      const count = Math.floor(w / 8); // ~1 line per 8px
-      const lines: GrainLine[] = [];
+      const count = Math.floor(w / 10);
+      const lines: InkLine[] = [];
 
       for (let i = 0; i < count; i++) {
         lines.push(createLine(w, h, false));
@@ -57,21 +56,21 @@ export default function GrainDripHero() {
       linesRef.current = lines;
     };
 
-    const createLine = (w: number, h: number, fromTop: boolean): GrainLine => {
+    const createLine = (w: number, h: number, fromTop: boolean): InkLine => {
       const x = Math.random() * w;
       return {
         x,
         baseX: x,
         y: fromTop ? -Math.random() * h * 0.3 : Math.random() * h,
-        speed: 0.15 + Math.random() * 0.4,
+        speed: 0.12 + Math.random() * 0.35,
         length: 0,
-        maxLength: 40 + Math.random() * 160,
-        opacity: 0.03 + Math.random() * 0.18,
-        width: 0.5 + Math.random() * 1.5,
-        wobbleAmp: 1 + Math.random() * 4,
+        maxLength: 30 + Math.random() * 140,
+        opacity: 0.04 + Math.random() * 0.14,
+        width: 0.5 + Math.random() * 1.8,
+        wobbleAmp: 0.5 + Math.random() * 3,
         wobbleFreq: 0.003 + Math.random() * 0.008,
         phase: Math.random() * Math.PI * 2,
-        hue: 42 + Math.random() * 16, // gold range: 42-58
+        isOrange: Math.random() < 0.15, // 15% of lines are orange
       };
     };
 
@@ -81,8 +80,8 @@ export default function GrainDripHero() {
       timeRef.current += 1;
       const t = timeRef.current;
 
-      // Fade trail effect — slow fade for ghostly persistence
-      ctx.fillStyle = "rgba(12, 10, 8, 0.06)";
+      // Fade trail — ink persistence on newsprint
+      ctx.fillStyle = "rgba(26, 26, 24, 0.05)";
       ctx.fillRect(0, 0, w, h);
 
       const lines = linesRef.current;
@@ -90,31 +89,34 @@ export default function GrainDripHero() {
       for (let i = 0; i < lines.length; i++) {
         const line = lines[i];
 
-        // Grow length to max
         if (line.length < line.maxLength) {
           line.length += line.speed * 0.8;
         }
 
-        // Move downward
         line.y += line.speed;
 
-        // Wobble horizontally — organic wave
         const wobble = Math.sin(line.y * line.wobbleFreq + line.phase + t * 0.005) * line.wobbleAmp;
         line.x = line.baseX + wobble;
 
-        // Draw the grain line
         const gradient = ctx.createLinearGradient(line.x, line.y - line.length, line.x, line.y);
-        gradient.addColorStop(0, `hsla(${line.hue}, 55%, 55%, 0)`);
-        gradient.addColorStop(0.3, `hsla(${line.hue}, 55%, 55%, ${line.opacity * 0.6})`);
-        gradient.addColorStop(0.7, `hsla(${line.hue}, 60%, 50%, ${line.opacity})`);
-        gradient.addColorStop(1, `hsla(${line.hue}, 50%, 45%, ${line.opacity * 0.3})`);
+
+        if (line.isOrange) {
+          gradient.addColorStop(0, `rgba(255, 94, 26, 0)`);
+          gradient.addColorStop(0.3, `rgba(255, 94, 26, ${line.opacity * 0.6})`);
+          gradient.addColorStop(0.7, `rgba(255, 94, 26, ${line.opacity})`);
+          gradient.addColorStop(1, `rgba(255, 94, 26, ${line.opacity * 0.3})`);
+        } else {
+          gradient.addColorStop(0, `rgba(242, 239, 232, 0)`);
+          gradient.addColorStop(0.3, `rgba(242, 239, 232, ${line.opacity * 0.5})`);
+          gradient.addColorStop(0.7, `rgba(220, 216, 208, ${line.opacity})`);
+          gradient.addColorStop(1, `rgba(200, 196, 188, ${line.opacity * 0.3})`);
+        }
 
         ctx.beginPath();
         ctx.strokeStyle = gradient;
         ctx.lineWidth = line.width;
         ctx.lineCap = "round";
 
-        // Draw as a slightly curved path for organic feel
         const segments = 6;
         const segLen = line.length / segments;
         ctx.moveTo(line.x, line.y - line.length);
@@ -125,23 +127,21 @@ export default function GrainDripHero() {
         }
         ctx.stroke();
 
-        // Recycle lines that go off screen
         if (line.y - line.length > h) {
           lines[i] = createLine(w, h, true);
         }
       }
 
-      // Occasional bright shimmer flash on random lines
-      if (t % 120 === 0) {
+      // Occasional bright flash
+      if (t % 90 === 0) {
         const idx = Math.floor(Math.random() * lines.length);
         if (lines[idx]) {
-          lines[idx].opacity = Math.min(lines[idx].opacity + 0.1, 0.35);
+          lines[idx].opacity = Math.min(lines[idx].opacity + 0.08, 0.3);
         }
       }
 
-      // Slow decay of shimmer
       for (const line of lines) {
-        if (line.opacity > 0.2) {
+        if (line.opacity > 0.18) {
           line.opacity -= 0.001;
         }
       }
@@ -150,8 +150,7 @@ export default function GrainDripHero() {
     };
 
     resize();
-    // Initial fill to black
-    ctx.fillStyle = "#0c0a08";
+    ctx.fillStyle = "#1a1a18";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     animRef.current = requestAnimationFrame(draw);
 

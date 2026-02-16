@@ -1,9 +1,6 @@
 /**
  * Greater Guitars logo — "greater than" chevron mark
- *
- * Recreated as SVG from the original raster logo on greaterguitars.com.
- * Double-lined chevron (>) pointing right with "GUITARS" text, inside a circle.
- * Rendered in antique gold on transparent for dark backgrounds.
+ * Updated for Zine Shop aesthetic — newsprint/orange on dark, ink on light.
  */
 
 interface LogoProps {
@@ -11,11 +8,13 @@ interface LogoProps {
   showText?: boolean;
   className?: string;
   style?: React.CSSProperties;
+  variant?: "light" | "dark"; // light = for dark backgrounds, dark = for light backgrounds
 }
 
-export default function Logo({ size = 80, showText = true, className = "", style }: LogoProps) {
-  const gold = "rgba(200, 170, 90, 0.9)";
-  const goldMuted = "rgba(200, 170, 90, 0.5)";
+export default function Logo({ size = 80, showText = true, className = "", style, variant = "light" }: LogoProps) {
+  const primary = variant === "light" ? "#f2efe8" : "#1a1a18";
+  const accent = "#ff5e1a";
+  const muted = variant === "light" ? "rgba(242, 239, 232, 0.4)" : "rgba(26, 26, 24, 0.3)";
 
   return (
     <svg
@@ -27,22 +26,22 @@ export default function Logo({ size = 80, showText = true, className = "", style
       style={style}
     >
       {/* Circle border */}
-      <circle cx="100" cy="100" r="94" stroke={goldMuted} strokeWidth="2.5" fill="none" />
+      <circle cx="100" cy="100" r="94" stroke={muted} strokeWidth="2.5" fill="none" />
 
       {/* Outer chevron */}
       <polyline
         points="55,40 145,100 55,160"
-        stroke={gold}
+        stroke={accent}
         strokeWidth="8"
         strokeLinecap="round"
         strokeLinejoin="round"
         fill="none"
       />
 
-      {/* Inner chevron — slightly offset inward */}
+      {/* Inner chevron */}
       <polyline
         points="72,55 148,100 72,145"
-        stroke={gold}
+        stroke={primary}
         strokeWidth="5"
         strokeLinecap="round"
         strokeLinejoin="round"
@@ -55,11 +54,11 @@ export default function Logo({ size = 80, showText = true, className = "", style
           x="100"
           y="178"
           textAnchor="middle"
-          fill={gold}
-          fontFamily='"Inter", sans-serif'
-          fontSize="22"
-          fontWeight="600"
-          letterSpacing="3"
+          fill={primary}
+          fontFamily='"DM Mono", monospace'
+          fontSize="20"
+          fontWeight="400"
+          letterSpacing="4"
         >
           GUITARS
         </text>

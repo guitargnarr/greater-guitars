@@ -6,11 +6,11 @@ export default function YouTubeVideos() {
       <div className="text-center mb-16">
         <p
           style={{
-            fontFamily: '"Inter", sans-serif',
+            fontFamily: '"DM Mono", monospace',
             fontSize: "0.7rem",
-            letterSpacing: "0.4em",
+            letterSpacing: "0.2em",
             textTransform: "uppercase",
-            color: "rgba(200, 170, 90, 0.45)",
+            color: "#ff5e1a",
             marginBottom: "0.75rem",
           }}
         >
@@ -18,20 +18,21 @@ export default function YouTubeVideos() {
         </p>
         <h2
           style={{
-            fontFamily: '"DM Serif Display", serif',
+            fontFamily: '"Clash Display", sans-serif',
             fontSize: "clamp(2rem, 5vw, 3rem)",
-            color: "#ebe1c8",
+            fontWeight: 600,
+            color: "#1a1a18",
+            letterSpacing: "-0.01em",
           }}
         >
           From the workshop to the stage
         </h2>
         <p
           style={{
-            fontFamily: '"Inter", sans-serif',
-            fontSize: "0.9rem",
-            color: "rgba(200, 170, 90, 0.5)",
-            marginTop: "1rem",
-            fontWeight: 300,
+            fontFamily: '"Instrument Serif", Georgia, serif',
+            fontSize: "1.05rem",
+            color: "#8a8580",
+            marginTop: "0.75rem",
           }}
         >
           Watch the builds, hear the sound.
@@ -41,15 +42,13 @@ export default function YouTubeVideos() {
       <div className="grid md:grid-cols-3 gap-8">
         {VIDEOS.map((video, i) => (
           <div key={i}>
-            {/* Video container — 16:9 */}
             {video.youtubeId ? (
               <div
                 style={{
                   position: "relative",
                   aspectRatio: "16/9",
-                  borderRadius: "2px",
                   overflow: "hidden",
-                  border: "1px solid rgba(200, 170, 90, 0.1)",
+                  border: "1px solid #d4d0c8",
                 }}
               >
                 <iframe
@@ -71,19 +70,17 @@ export default function YouTubeVideos() {
                 className="flex items-center justify-center"
                 style={{
                   aspectRatio: "16/9",
-                  background: "rgba(20, 18, 14, 0.5)",
-                  border: "1px dashed rgba(200, 170, 90, 0.1)",
-                  borderRadius: "2px",
+                  background: "#e8e4db",
+                  border: "1px dashed #d4d0c8",
                 }}
               >
-                {/* Play icon placeholder */}
                 <div className="text-center">
                   <svg
                     width="40"
                     height="40"
                     viewBox="0 0 24 24"
                     fill="none"
-                    stroke="rgba(200, 170, 90, 0.2)"
+                    stroke="#d4d0c8"
                     strokeWidth="1"
                     strokeLinecap="round"
                     strokeLinejoin="round"
@@ -93,10 +90,9 @@ export default function YouTubeVideos() {
                   </svg>
                   <p
                     style={{
-                      fontFamily: '"Inter", sans-serif',
-                      fontSize: "0.75rem",
-                      color: "rgba(200, 170, 90, 0.2)",
-                      fontWeight: 300,
+                      fontFamily: '"DM Mono", monospace',
+                      fontSize: "0.7rem",
+                      color: "#d4d0c8",
                     }}
                   >
                     YouTube video
@@ -105,15 +101,12 @@ export default function YouTubeVideos() {
               </div>
             )}
 
-            {/* Title */}
             <p
               style={{
-                fontFamily: '"Inter", sans-serif',
-                fontSize: "0.85rem",
-                color: video.youtubeId
-                  ? "rgba(200, 170, 90, 0.6)"
-                  : "rgba(200, 170, 90, 0.2)",
-                fontWeight: 300,
+                fontFamily: '"Clash Display", sans-serif',
+                fontSize: "0.95rem",
+                fontWeight: 400,
+                color: video.youtubeId ? "#1a1a18" : "#d4d0c8",
                 marginTop: "0.75rem",
               }}
             >
@@ -122,12 +115,9 @@ export default function YouTubeVideos() {
             {video.description && (
               <p
                 style={{
-                  fontFamily: '"Inter", sans-serif',
-                  fontSize: "0.7rem",
-                  color: video.youtubeId
-                    ? "rgba(200, 170, 90, 0.4)"
-                    : "rgba(200, 170, 90, 0.15)",
-                  fontWeight: 300,
+                  fontFamily: '"Instrument Serif", Georgia, serif',
+                  fontSize: "0.85rem",
+                  color: video.youtubeId ? "#8a8580" : "#d4d0c8",
                   marginTop: "0.25rem",
                 }}
               >
@@ -141,11 +131,10 @@ export default function YouTubeVideos() {
       <p
         className="text-center mt-6"
         style={{
-          fontFamily: '"Inter", sans-serif',
-          fontSize: "0.7rem",
-          color: "rgba(200, 170, 90, 0.25)",
+          fontFamily: '"DM Mono", monospace',
+          fontSize: "0.65rem",
+          color: "#d4d0c8",
           fontStyle: "italic",
-          fontWeight: 300,
         }}
       >
         Alex — add your YouTube video IDs to content.ts to activate these embeds.

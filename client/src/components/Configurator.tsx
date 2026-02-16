@@ -1,9 +1,5 @@
 /**
  * Configurator: Interactive guitar builder form
- *
- * Flow: Select model → pick options → add notes → submit inquiry
- * Sends to greaterguitars@gmail.com via mailto (no backend needed)
- * Also offers full custom build inquiry path
  */
 
 import { useState, useEffect } from "react";
@@ -25,7 +21,6 @@ export default function Configurator({ selectedModelId }: ConfiguratorProps) {
 
   const selectedModel = MODELS.find((m) => m.id === modelId);
 
-  // Sync external selection
   useEffect(() => {
     if (selectedModelId) {
       setModelId(selectedModelId);
@@ -34,7 +29,6 @@ export default function Configurator({ selectedModelId }: ConfiguratorProps) {
     }
   }, [selectedModelId]);
 
-  // Reset options when model changes
   useEffect(() => {
     if (selectedModel) {
       setBodyStyle(selectedModel.bodyStyles[0] || "");
@@ -56,24 +50,23 @@ export default function Configurator({ selectedModelId }: ConfiguratorProps) {
   };
 
   const inputStyle = {
-    fontFamily: '"Inter", sans-serif',
-    fontSize: "0.85rem",
-    color: "#ebe1c8",
-    background: "rgba(20, 18, 14, 0.9)",
-    border: "1px solid rgba(200, 170, 90, 0.15)",
-    borderRadius: "1px",
+    fontFamily: '"DM Mono", monospace',
+    fontSize: "0.8rem",
+    color: "#1a1a18",
+    background: "#fff",
+    border: "1px solid #d4d0c8",
     padding: "0.75rem 1rem",
     width: "100%",
     outline: "none",
-    transition: "border-color 0.3s ease",
+    transition: "border-color 0.15s ease",
   };
 
   const labelStyle = {
-    fontFamily: '"Inter", sans-serif',
-    fontSize: "0.7rem",
-    letterSpacing: "0.2em",
+    fontFamily: '"DM Mono", monospace',
+    fontSize: "0.65rem",
+    letterSpacing: "0.15em",
     textTransform: "uppercase" as const,
-    color: "rgba(200, 170, 90, 0.5)",
+    color: "#8a8580",
     marginBottom: "0.5rem",
     display: "block",
   };
@@ -83,9 +76,10 @@ export default function Configurator({ selectedModelId }: ConfiguratorProps) {
       <div className="text-center py-16">
         <h3
           style={{
-            fontFamily: '"DM Serif Display", serif',
+            fontFamily: '"Clash Display", sans-serif',
             fontSize: "1.8rem",
-            color: "#ebe1c8",
+            fontWeight: 600,
+            color: "#1a1a18",
             marginBottom: "1rem",
           }}
         >
@@ -93,10 +87,9 @@ export default function Configurator({ selectedModelId }: ConfiguratorProps) {
         </h3>
         <p
           style={{
-            fontFamily: '"Inter", sans-serif',
-            fontSize: "0.9rem",
-            color: "rgba(200, 170, 90, 0.6)",
-            fontWeight: 300,
+            fontFamily: '"Instrument Serif", Georgia, serif',
+            fontSize: "1.05rem",
+            color: "#6a6a68",
             lineHeight: 1.7,
           }}
         >
@@ -111,7 +104,6 @@ export default function Configurator({ selectedModelId }: ConfiguratorProps) {
             cursor: "pointer",
             marginTop: "2rem",
             maxWidth: "200px",
-            border: "1px solid rgba(200, 170, 90, 0.3)",
             textAlign: "center",
           }}
         >
@@ -124,14 +116,14 @@ export default function Configurator({ selectedModelId }: ConfiguratorProps) {
   return (
     <div>
       {/* Header */}
-      <div className="text-center mb-12">
+      <div className="text-center mb-10">
         <p
           style={{
-            fontFamily: '"Inter", sans-serif',
+            fontFamily: '"DM Mono", monospace',
             fontSize: "0.7rem",
-            letterSpacing: "0.4em",
+            letterSpacing: "0.2em",
             textTransform: "uppercase",
-            color: "rgba(200, 170, 90, 0.45)",
+            color: "#ff5e1a",
             marginBottom: "0.75rem",
           }}
         >
@@ -139,16 +131,18 @@ export default function Configurator({ selectedModelId }: ConfiguratorProps) {
         </p>
         <h2
           style={{
-            fontFamily: '"DM Serif Display", serif',
+            fontFamily: '"Clash Display", sans-serif',
             fontSize: "clamp(1.8rem, 4vw, 2.5rem)",
-            color: "#ebe1c8",
+            fontWeight: 600,
+            color: "#1a1a18",
+            letterSpacing: "-0.01em",
           }}
         >
           {isCustom ? "Describe your dream guitar" : "Build yours"}
         </h2>
       </div>
 
-      {/* Toggle between model config and full custom */}
+      {/* Toggle */}
       <div className="flex justify-center gap-4 mb-10">
         <button
           onClick={() => setIsCustom(false)}
@@ -157,8 +151,9 @@ export default function Configurator({ selectedModelId }: ConfiguratorProps) {
             maxWidth: "180px",
             textAlign: "center",
             cursor: "pointer",
-            background: !isCustom ? "rgba(200, 170, 90, 0.15)" : "rgba(20, 18, 14, 0.9)",
-            borderColor: !isCustom ? "rgba(200, 170, 90, 0.3)" : "rgba(200, 170, 90, 0.1)",
+            background: !isCustom ? "#1a1a18" : "#fff",
+            color: !isCustom ? "#f2efe8" : "#1a1a18",
+            borderColor: !isCustom ? "#1a1a18" : "#d4d0c8",
           }}
         >
           From a model
@@ -170,8 +165,9 @@ export default function Configurator({ selectedModelId }: ConfiguratorProps) {
             maxWidth: "180px",
             textAlign: "center",
             cursor: "pointer",
-            background: isCustom ? "rgba(200, 170, 90, 0.15)" : "rgba(20, 18, 14, 0.9)",
-            borderColor: isCustom ? "rgba(200, 170, 90, 0.3)" : "rgba(200, 170, 90, 0.1)",
+            background: isCustom ? "#1a1a18" : "#fff",
+            color: isCustom ? "#f2efe8" : "#1a1a18",
+            borderColor: isCustom ? "#1a1a18" : "#d4d0c8",
           }}
         >
           Full custom
@@ -179,7 +175,6 @@ export default function Configurator({ selectedModelId }: ConfiguratorProps) {
       </div>
 
       <div className="space-y-6">
-        {/* Model selection (not shown in custom mode) */}
         {!isCustom && (
           <>
             <div>
@@ -211,8 +206,9 @@ export default function Configurator({ selectedModelId }: ConfiguratorProps) {
                           ...inputStyle,
                           width: "auto",
                           cursor: "pointer",
-                          background: bodyStyle === bs ? "rgba(200, 170, 90, 0.15)" : "rgba(20, 18, 14, 0.9)",
-                          borderColor: bodyStyle === bs ? "rgba(200, 170, 90, 0.35)" : "rgba(200, 170, 90, 0.1)",
+                          background: bodyStyle === bs ? "#1a1a18" : "#fff",
+                          color: bodyStyle === bs ? "#f2efe8" : "#1a1a18",
+                          borderColor: bodyStyle === bs ? "#1a1a18" : "#d4d0c8",
                         }}
                       >
                         {bs}
@@ -233,8 +229,9 @@ export default function Configurator({ selectedModelId }: ConfiguratorProps) {
                           ...inputStyle,
                           width: "auto",
                           cursor: "pointer",
-                          background: color === c ? "rgba(200, 170, 90, 0.15)" : "rgba(20, 18, 14, 0.9)",
-                          borderColor: color === c ? "rgba(200, 170, 90, 0.35)" : "rgba(200, 170, 90, 0.1)",
+                          background: color === c ? "#1a1a18" : "#fff",
+                          color: color === c ? "#f2efe8" : "#1a1a18",
+                          borderColor: color === c ? "#1a1a18" : "#d4d0c8",
                         }}
                       >
                         <span
@@ -243,7 +240,7 @@ export default function Configurator({ selectedModelId }: ConfiguratorProps) {
                             height: "0.75rem",
                             borderRadius: "50%",
                             background: selectedModel.colorHexes[c] || "#888",
-                            border: "1px solid rgba(255,255,255,0.15)",
+                            border: "1px solid #d4d0c8",
                             display: "inline-block",
                           }}
                         />
@@ -257,7 +254,6 @@ export default function Configurator({ selectedModelId }: ConfiguratorProps) {
           </>
         )}
 
-        {/* Contact info */}
         <div className="grid md:grid-cols-2 gap-4">
           <div>
             <label style={labelStyle}>Your name</label>
@@ -267,8 +263,8 @@ export default function Configurator({ selectedModelId }: ConfiguratorProps) {
               onChange={(e) => setName(e.target.value)}
               placeholder="Name"
               style={inputStyle}
-              onFocus={(e) => { e.currentTarget.style.borderColor = "rgba(200, 170, 90, 0.4)"; }}
-              onBlur={(e) => { e.currentTarget.style.borderColor = "rgba(200, 170, 90, 0.15)"; }}
+              onFocus={(e) => { e.currentTarget.style.borderColor = "#ff5e1a"; }}
+              onBlur={(e) => { e.currentTarget.style.borderColor = "#d4d0c8"; }}
             />
           </div>
           <div>
@@ -279,15 +275,15 @@ export default function Configurator({ selectedModelId }: ConfiguratorProps) {
               onChange={(e) => setEmail(e.target.value)}
               placeholder="you@email.com"
               style={inputStyle}
-              onFocus={(e) => { e.currentTarget.style.borderColor = "rgba(200, 170, 90, 0.4)"; }}
-              onBlur={(e) => { e.currentTarget.style.borderColor = "rgba(200, 170, 90, 0.15)"; }}
+              onFocus={(e) => { e.currentTarget.style.borderColor = "#ff5e1a"; }}
+              onBlur={(e) => { e.currentTarget.style.borderColor = "#d4d0c8"; }}
             />
           </div>
         </div>
 
         <div>
           <label style={labelStyle}>
-            {isCustom ? "Describe your build" : "Additional notes (optional)"}
+            {isCustom ? "What's your sound?" : "Anything else? (optional)"}
           </label>
           <textarea
             value={notes}
@@ -299,35 +295,34 @@ export default function Configurator({ selectedModelId }: ConfiguratorProps) {
                 : "Anything else Alex should know about what you're looking for..."
             }
             style={{ ...inputStyle, resize: "vertical" }}
-            onFocus={(e) => { e.currentTarget.style.borderColor = "rgba(200, 170, 90, 0.4)"; }}
-            onBlur={(e) => { e.currentTarget.style.borderColor = "rgba(200, 170, 90, 0.15)"; }}
+            onFocus={(e) => { e.currentTarget.style.borderColor = "#ff5e1a"; }}
+            onBlur={(e) => { e.currentTarget.style.borderColor = "#d4d0c8"; }}
           />
         </div>
 
-        {/* Summary + Submit */}
         {!isCustom && selectedModel && (
           <div
             className="flex items-center justify-between px-4 py-3"
             style={{
-              background: "rgba(200, 170, 90, 0.05)",
-              borderRadius: "1px",
-              border: "1px solid rgba(200, 170, 90, 0.08)",
+              background: "#e8e4db",
+              border: "1px solid #d4d0c8",
             }}
           >
             <span
               style={{
-                fontFamily: '"Inter", sans-serif',
-                fontSize: "0.8rem",
-                color: "rgba(200, 170, 90, 0.5)",
+                fontFamily: '"DM Mono", monospace',
+                fontSize: "0.75rem",
+                color: "#6a6a68",
               }}
             >
               {selectedModel.name} / {bodyStyle} / {color}
             </span>
             <span
               style={{
-                fontFamily: '"DM Serif Display", serif',
-                fontSize: "1.2rem",
-                color: "#ebe1c8",
+                fontFamily: '"Clash Display", sans-serif',
+                fontSize: "1.1rem",
+                fontWeight: 600,
+                color: "#1a1a18",
               }}
             >
               Starting at ${selectedModel.basePrice.toLocaleString()}
@@ -339,20 +334,19 @@ export default function Configurator({ selectedModelId }: ConfiguratorProps) {
           onClick={handleSubmit}
           disabled={!name || !email || (!isCustom && !modelId)}
           style={{
-            fontFamily: '"Inter", sans-serif',
-            fontSize: "0.8rem",
-            letterSpacing: "0.2em",
+            fontFamily: '"DM Mono", monospace',
+            fontSize: "0.75rem",
+            letterSpacing: "0.15em",
             textTransform: "uppercase",
             fontWeight: 500,
-            color: "#0c0a08",
+            color: "#f2efe8",
             background: (!name || !email || (!isCustom && !modelId))
-              ? "rgba(200, 170, 90, 0.3)"
-              : "rgba(200, 170, 90, 0.9)",
+              ? "#d4d0c8"
+              : "#ff5e1a",
             border: "none",
             padding: "1rem 2rem",
-            borderRadius: "1px",
             cursor: (!name || !email || (!isCustom && !modelId)) ? "not-allowed" : "pointer",
-            transition: "background 0.3s ease",
+            transition: "background 0.15s ease",
             width: "100%",
           }}
         >
@@ -362,10 +356,10 @@ export default function Configurator({ selectedModelId }: ConfiguratorProps) {
         <p
           className="text-center"
           style={{
-            fontFamily: '"Inter", sans-serif',
-            fontSize: "0.7rem",
-            color: "rgba(200, 170, 90, 0.3)",
-            fontWeight: 300,
+            fontFamily: '"Instrument Serif", Georgia, serif',
+            fontSize: "0.85rem",
+            color: "#8a8580",
+            fontStyle: "italic",
           }}
         >
           Opens your email client. Alex reviews every inquiry personally and follows up within 48 hours.

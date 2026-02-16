@@ -6,8 +6,8 @@ export default function Footer() {
     <footer
       className="relative py-16 px-6"
       style={{
-        background: "#080604",
-        borderTop: "1px solid rgba(200, 170, 90, 0.06)",
+        background: "#1a1a18",
+        borderTop: "1px solid rgba(242, 239, 232, 0.06)",
       }}
     >
       <div className="max-w-4xl mx-auto">
@@ -15,12 +15,13 @@ export default function Footer() {
           {/* Brand */}
           <div>
             <div className="flex items-center gap-3 mb-3">
-              <Logo size={36} showText={false} />
+              <Logo size={32} showText={false} />
               <h4
                 style={{
-                  fontFamily: '"DM Serif Display", serif',
-                  fontSize: "1.3rem",
-                  color: "#ebe1c8",
+                  fontFamily: '"Clash Display", sans-serif',
+                  fontSize: "1.2rem",
+                  fontWeight: 600,
+                  color: "#f2efe8",
                 }}
               >
                 Greater Guitars
@@ -28,11 +29,10 @@ export default function Footer() {
             </div>
             <p
               style={{
-                fontFamily: '"Inter", sans-serif',
-                fontSize: "0.8rem",
+                fontFamily: '"Instrument Serif", Georgia, serif',
+                fontSize: "0.9rem",
                 lineHeight: 1.7,
-                color: "rgba(200, 170, 90, 0.4)",
-                fontWeight: 300,
+                color: "rgba(242, 239, 232, 0.4)",
               }}
             >
               Handmade guitars and repairs.
@@ -45,11 +45,11 @@ export default function Footer() {
           <div>
             <p
               style={{
-                fontFamily: '"Inter", sans-serif',
-                fontSize: "0.65rem",
-                letterSpacing: "0.25em",
+                fontFamily: '"DM Mono", monospace',
+                fontSize: "0.6rem",
+                letterSpacing: "0.15em",
                 textTransform: "uppercase",
-                color: "rgba(200, 170, 90, 0.35)",
+                color: "#ff5e1a",
                 marginBottom: "1rem",
               }}
             >
@@ -66,15 +66,14 @@ export default function Footer() {
                   key={link.href}
                   href={link.href}
                   style={{
-                    fontFamily: '"Inter", sans-serif',
-                    fontSize: "0.8rem",
-                    color: "rgba(200, 170, 90, 0.5)",
+                    fontFamily: '"DM Mono", monospace',
+                    fontSize: "0.75rem",
+                    color: "rgba(242, 239, 232, 0.5)",
                     textDecoration: "none",
-                    fontWeight: 300,
-                    transition: "color 0.3s ease",
+                    transition: "color 0.15s ease",
                   }}
-                  onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = "rgba(200, 170, 90, 0.8)"; }}
-                  onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = "rgba(200, 170, 90, 0.5)"; }}
+                  onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = "#ff5e1a"; }}
+                  onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = "rgba(242, 239, 232, 0.5)"; }}
                 >
                   {link.label}
                 </a>
@@ -86,11 +85,11 @@ export default function Footer() {
           <div>
             <p
               style={{
-                fontFamily: '"Inter", sans-serif',
-                fontSize: "0.65rem",
-                letterSpacing: "0.25em",
+                fontFamily: '"DM Mono", monospace',
+                fontSize: "0.6rem",
+                letterSpacing: "0.15em",
                 textTransform: "uppercase",
-                color: "rgba(200, 170, 90, 0.35)",
+                color: "#ff5e1a",
                 marginBottom: "1rem",
               }}
             >
@@ -99,11 +98,10 @@ export default function Footer() {
             <a
               href={`mailto:${CUSTOM_BUILD_INFO.email}`}
               style={{
-                fontFamily: '"Inter", sans-serif',
-                fontSize: "0.8rem",
-                color: "rgba(200, 170, 90, 0.6)",
+                fontFamily: '"DM Mono", monospace',
+                fontSize: "0.75rem",
+                color: "rgba(242, 239, 232, 0.6)",
                 textDecoration: "none",
-                fontWeight: 300,
               }}
             >
               {CUSTOM_BUILD_INFO.email}
@@ -114,11 +112,10 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 style={{
-                  fontFamily: '"Inter", sans-serif',
-                  fontSize: "0.8rem",
-                  color: "rgba(200, 170, 90, 0.5)",
+                  fontFamily: '"DM Mono", monospace',
+                  fontSize: "0.75rem",
+                  color: "rgba(242, 239, 232, 0.5)",
                   textDecoration: "none",
-                  fontWeight: 300,
                 }}
               >
                 @greater_guitars
@@ -127,20 +124,19 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Bottom line */}
+        {/* Bottom */}
         <div
           className="pt-8 text-center"
-          style={{ borderTop: "1px solid rgba(200, 170, 90, 0.06)" }}
+          style={{ borderTop: "1px solid rgba(242, 239, 232, 0.06)" }}
         >
           <p
             style={{
-              fontFamily: '"Inter", sans-serif',
-              fontSize: "0.65rem",
-              color: "rgba(200, 170, 90, 0.2)",
-              fontWeight: 300,
+              fontFamily: '"DM Mono", monospace',
+              fontSize: "0.6rem",
+              color: "rgba(242, 239, 232, 0.2)",
             }}
           >
-            &copy; {new Date().getFullYear()} Greater Guitars. All rights reserved.
+            &copy; {new Date().getFullYear()} Greater Guitars. Built by hand. Louisville, KY.
           </p>
         </div>
       </div>

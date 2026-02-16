@@ -1,8 +1,5 @@
 /**
- * Credentials: Alex's professional story and musician relationships
- *
- * Placeholder slots for real photos/names — Alex fills these in.
- * No fabricated testimonials or endorsements.
+ * Credentials: Alex's story — dark section, editorial profile style
  */
 
 export default function Credentials() {
@@ -12,11 +9,11 @@ export default function Credentials() {
       <div className="text-center mb-16">
         <p
           style={{
-            fontFamily: '"Inter", sans-serif',
+            fontFamily: '"DM Mono", monospace',
             fontSize: "0.7rem",
-            letterSpacing: "0.4em",
+            letterSpacing: "0.2em",
             textTransform: "uppercase",
-            color: "rgba(200, 170, 90, 0.45)",
+            color: "#ff5e1a",
             marginBottom: "0.75rem",
           }}
         >
@@ -24,9 +21,11 @@ export default function Credentials() {
         </p>
         <h2
           style={{
-            fontFamily: '"DM Serif Display", serif',
+            fontFamily: '"Clash Display", sans-serif',
             fontSize: "clamp(2rem, 5vw, 3rem)",
-            color: "#ebe1c8",
+            fontWeight: 600,
+            color: "#f2efe8",
+            letterSpacing: "-0.01em",
           }}
         >
           Alex MacLeod
@@ -37,11 +36,10 @@ export default function Credentials() {
       <div className="max-w-2xl mx-auto mb-20">
         <p
           style={{
-            fontFamily: '"Inter", sans-serif',
-            fontSize: "0.95rem",
-            lineHeight: 1.9,
-            color: "rgba(200, 170, 90, 0.6)",
-            fontWeight: 300,
+            fontFamily: '"Instrument Serif", Georgia, serif',
+            fontSize: "1.1rem",
+            lineHeight: 1.85,
+            color: "rgba(242, 239, 232, 0.6)",
             textAlign: "center",
           }}
         >
@@ -52,7 +50,7 @@ export default function Credentials() {
         </p>
       </div>
 
-      {/* Stats / Highlights */}
+      {/* Stats */}
       <div className="grid md:grid-cols-3 gap-8 mb-20">
         {[
           { label: "Handmade", value: "Every one", detail: "No CNC, no templates. Each guitar shaped by hand." },
@@ -64,16 +62,15 @@ export default function Credentials() {
             className="text-center"
             style={{
               padding: "2rem",
-              background: "rgba(20, 18, 14, 0.5)",
-              border: "1px solid rgba(200, 170, 90, 0.06)",
-              borderRadius: "2px",
+              border: "1px solid rgba(242, 239, 232, 0.08)",
             }}
           >
             <p
               style={{
-                fontFamily: '"DM Serif Display", serif',
-                fontSize: "1.4rem",
-                color: "#ebe1c8",
+                fontFamily: '"Clash Display", sans-serif',
+                fontSize: "1.3rem",
+                fontWeight: 600,
+                color: "#f2efe8",
                 marginBottom: "0.25rem",
               }}
             >
@@ -81,11 +78,11 @@ export default function Credentials() {
             </p>
             <p
               style={{
-                fontFamily: '"Inter", sans-serif',
-                fontSize: "0.65rem",
-                letterSpacing: "0.25em",
+                fontFamily: '"DM Mono", monospace',
+                fontSize: "0.6rem",
+                letterSpacing: "0.15em",
                 textTransform: "uppercase",
-                color: "rgba(200, 170, 90, 0.45)",
+                color: "#ff5e1a",
                 marginBottom: "0.75rem",
               }}
             >
@@ -93,10 +90,9 @@ export default function Credentials() {
             </p>
             <p
               style={{
-                fontFamily: '"Inter", sans-serif',
-                fontSize: "0.8rem",
-                color: "rgba(200, 170, 90, 0.4)",
-                fontWeight: 300,
+                fontFamily: '"Instrument Serif", Georgia, serif',
+                fontSize: "0.9rem",
+                color: "rgba(242, 239, 232, 0.4)",
                 lineHeight: 1.6,
               }}
             >
@@ -106,13 +102,14 @@ export default function Credentials() {
         ))}
       </div>
 
-      {/* Musician Relationships — placeholder slots */}
+      {/* Musician slots */}
       <div className="text-center mb-10">
         <h3
           style={{
-            fontFamily: '"DM Serif Display", serif',
-            fontSize: "1.5rem",
-            color: "#ebe1c8",
+            fontFamily: '"Clash Display", sans-serif',
+            fontSize: "1.4rem",
+            fontWeight: 600,
+            color: "#f2efe8",
             marginBottom: "0.5rem",
           }}
         >
@@ -120,10 +117,9 @@ export default function Credentials() {
         </h3>
         <p
           style={{
-            fontFamily: '"Inter", sans-serif',
-            fontSize: "0.85rem",
-            color: "rgba(200, 170, 90, 0.45)",
-            fontWeight: 300,
+            fontFamily: '"Instrument Serif", Georgia, serif',
+            fontSize: "0.95rem",
+            color: "rgba(242, 239, 232, 0.4)",
           }}
         >
           Working musicians who play Greater Guitars instruments
@@ -137,27 +133,25 @@ export default function Credentials() {
             className="text-center"
             style={{
               padding: "2rem 1.5rem",
-              background: "rgba(20, 18, 14, 0.3)",
-              border: "1px dashed rgba(200, 170, 90, 0.1)",
-              borderRadius: "2px",
+              border: "1px dashed rgba(242, 239, 232, 0.1)",
             }}
           >
-            {/* Placeholder avatar */}
             <div
               className="mx-auto mb-3"
               style={{
                 width: "3.5rem",
                 height: "3.5rem",
                 borderRadius: "50%",
-                background: "rgba(200, 170, 90, 0.08)",
-                border: "1px solid rgba(200, 170, 90, 0.1)",
+                background: "rgba(242, 239, 232, 0.06)",
+                border: "1px solid rgba(242, 239, 232, 0.1)",
               }}
             />
             <p
               style={{
-                fontFamily: '"DM Serif Display", serif',
+                fontFamily: '"Clash Display", sans-serif',
                 fontSize: "0.95rem",
-                color: "rgba(235, 225, 200, 0.35)",
+                fontWeight: 400,
+                color: "rgba(242, 239, 232, 0.3)",
                 marginBottom: "0.25rem",
               }}
             >
@@ -165,10 +159,9 @@ export default function Credentials() {
             </p>
             <p
               style={{
-                fontFamily: '"Inter", sans-serif',
-                fontSize: "0.7rem",
-                color: "rgba(200, 170, 90, 0.25)",
-                fontWeight: 300,
+                fontFamily: '"DM Mono", monospace',
+                fontSize: "0.65rem",
+                color: "rgba(242, 239, 232, 0.2)",
               }}
             >
               Band / Project
@@ -180,11 +173,10 @@ export default function Credentials() {
       <p
         className="text-center mt-6"
         style={{
-          fontFamily: '"Inter", sans-serif',
-          fontSize: "0.7rem",
-          color: "rgba(200, 170, 90, 0.25)",
+          fontFamily: '"DM Mono", monospace',
+          fontSize: "0.65rem",
+          color: "rgba(242, 239, 232, 0.2)",
           fontStyle: "italic",
-          fontWeight: 300,
         }}
       >
         Alex — replace these placeholders with your musician photos and names.

@@ -14,19 +14,18 @@ export default function ProductCard({ model, onSelect }: ProductCardProps) {
     <div
       className="group relative flex flex-col h-full"
       style={{
-        background: "rgba(20, 18, 14, 0.8)",
-        border: "1px solid rgba(200, 170, 90, 0.08)",
-        borderRadius: "2px",
+        background: "#fff",
+        border: "1px solid #d4d0c8",
         overflow: "hidden",
-        transition: "border-color 0.4s ease, transform 0.4s ease",
+        transition: "border-color 0.15s ease, box-shadow 0.15s ease",
       }}
       onMouseEnter={(e) => {
-        (e.currentTarget as HTMLElement).style.borderColor = "rgba(200, 170, 90, 0.2)";
-        (e.currentTarget as HTMLElement).style.transform = "translateY(-4px)";
+        (e.currentTarget as HTMLElement).style.borderColor = "#ff5e1a";
+        (e.currentTarget as HTMLElement).style.boxShadow = "0 4px 20px rgba(255, 94, 26, 0.08)";
       }}
       onMouseLeave={(e) => {
-        (e.currentTarget as HTMLElement).style.borderColor = "rgba(200, 170, 90, 0.08)";
-        (e.currentTarget as HTMLElement).style.transform = "translateY(0)";
+        (e.currentTarget as HTMLElement).style.borderColor = "#d4d0c8";
+        (e.currentTarget as HTMLElement).style.boxShadow = "none";
       }}
     >
       {/* Photo */}
@@ -60,11 +59,11 @@ export default function ProductCard({ model, onSelect }: ProductCardProps) {
                     width: "0.5rem",
                     height: "0.5rem",
                     borderRadius: "50%",
-                    background: i === imgIdx ? "rgba(235, 225, 200, 0.9)" : "rgba(235, 225, 200, 0.3)",
+                    background: i === imgIdx ? "#ff5e1a" : "rgba(255,255,255,0.5)",
                     border: "none",
                     cursor: "pointer",
                     padding: 0,
-                    transition: "background 0.2s ease",
+                    transition: "background 0.15s ease",
                   }}
                 />
               ))}
@@ -73,44 +72,19 @@ export default function ProductCard({ model, onSelect }: ProductCardProps) {
         </div>
       )}
 
-      {/* Color swatches */}
-      <div className="flex gap-2 px-6 pt-4">
-        {model.colors.map((color) => (
-          <div
-            key={color}
-            title={color}
-            style={{
-              width: "1.25rem",
-              height: "1.25rem",
-              borderRadius: "50%",
-              background: model.colorHexes[color] || "#888",
-              border: "1px solid rgba(255,255,255,0.1)",
-            }}
-          />
-        ))}
-      </div>
-
       {/* Content */}
-      <div className="flex flex-col flex-1 px-6 pt-4 pb-6">
-        <p
-          style={{
-            fontFamily: '"Inter", sans-serif',
-            fontSize: "0.65rem",
-            letterSpacing: "0.3em",
-            textTransform: "uppercase",
-            color: "rgba(200, 170, 90, 0.4)",
-            marginBottom: "0.5rem",
-          }}
-        >
-          {model.tagline}
-        </p>
+      <div className="flex flex-col flex-1 px-5 pt-4 pb-5">
+        {/* Tagline badge */}
+        <span className="tag-orange mb-3 self-start">{model.tagline}</span>
 
         <h3
           style={{
-            fontFamily: '"DM Serif Display", serif',
-            fontSize: "1.6rem",
-            color: "#ebe1c8",
+            fontFamily: '"Clash Display", sans-serif',
+            fontSize: "1.5rem",
+            fontWeight: 600,
+            color: "#1a1a18",
             marginBottom: "0.25rem",
+            letterSpacing: "-0.01em",
           }}
         >
           {model.name}
@@ -118,10 +92,11 @@ export default function ProductCard({ model, onSelect }: ProductCardProps) {
 
         <p
           style={{
-            fontFamily: '"DM Serif Display", serif',
-            fontSize: "1.1rem",
-            color: "rgba(200, 170, 90, 0.7)",
-            marginBottom: "1.25rem",
+            fontFamily: '"DM Mono", monospace',
+            fontSize: "1rem",
+            color: "#ff5e1a",
+            marginBottom: "1rem",
+            fontWeight: 500,
           }}
         >
           ${model.basePrice.toLocaleString()}
@@ -129,34 +104,46 @@ export default function ProductCard({ model, onSelect }: ProductCardProps) {
 
         <p
           style={{
-            fontFamily: '"Inter", sans-serif',
-            fontSize: "0.85rem",
-            lineHeight: 1.75,
-            color: "rgba(200, 170, 90, 0.5)",
-            fontWeight: 300,
-            marginBottom: "1.5rem",
+            fontFamily: '"Instrument Serif", Georgia, serif',
+            fontSize: "1rem",
+            lineHeight: 1.7,
+            color: "#6a6a68",
+            marginBottom: "1.25rem",
           }}
         >
           {model.description}
         </p>
 
+        {/* Color swatches */}
+        <div className="flex gap-2 mb-4">
+          {model.colors.map((color) => (
+            <div
+              key={color}
+              title={color}
+              style={{
+                width: "1.1rem",
+                height: "1.1rem",
+                borderRadius: "50%",
+                background: model.colorHexes[color] || "#888",
+                border: "1px solid #d4d0c8",
+              }}
+            />
+          ))}
+        </div>
+
         {/* Features */}
-        <ul className="mt-auto mb-6" style={{ listStyle: "none", padding: 0 }}>
+        <ul className="mt-auto mb-4" style={{ listStyle: "none", padding: 0 }}>
           {model.features.map((f) => (
             <li
               key={f}
               style={{
-                fontFamily: '"Inter", sans-serif',
-                fontSize: "0.75rem",
-                color: "rgba(200, 170, 90, 0.4)",
-                padding: "0.3rem 0",
-                borderBottom: "1px solid rgba(200, 170, 90, 0.05)",
-                display: "flex",
-                alignItems: "center",
-                gap: "0.5rem",
+                fontFamily: '"DM Mono", monospace',
+                fontSize: "0.7rem",
+                color: "#8a8580",
+                padding: "0.25rem 0",
+                borderBottom: "1px solid #e8e4db",
               }}
             >
-              <span style={{ color: "rgba(200, 170, 90, 0.25)", fontSize: "0.5rem" }}>&#9670;</span>
               {f}
             </li>
           ))}
@@ -165,10 +152,10 @@ export default function ProductCard({ model, onSelect }: ProductCardProps) {
         {/* Body styles */}
         <p
           style={{
-            fontFamily: '"Inter", sans-serif',
-            fontSize: "0.7rem",
-            color: "rgba(200, 170, 90, 0.3)",
-            marginBottom: "1.5rem",
+            fontFamily: '"DM Mono", monospace',
+            fontSize: "0.65rem",
+            color: "#8a8580",
+            marginBottom: "1.25rem",
           }}
         >
           Available as: {model.bodyStyles.join(" / ")}
@@ -177,28 +164,27 @@ export default function ProductCard({ model, onSelect }: ProductCardProps) {
         <button
           onClick={onSelect}
           style={{
-            fontFamily: '"Inter", sans-serif',
-            fontSize: "0.75rem",
-            letterSpacing: "0.2em",
+            fontFamily: '"DM Mono", monospace',
+            fontSize: "0.7rem",
+            letterSpacing: "0.15em",
             textTransform: "uppercase",
             fontWeight: 500,
-            color: "#0c0a08",
-            background: "rgba(200, 170, 90, 0.85)",
+            color: "#f2efe8",
+            background: "#1a1a18",
             border: "none",
             padding: "0.85rem 1.5rem",
-            borderRadius: "1px",
             cursor: "pointer",
-            transition: "background 0.3s ease",
+            transition: "background 0.15s ease",
             width: "100%",
           }}
           onMouseEnter={(e) => {
-            (e.currentTarget as HTMLElement).style.background = "rgba(220, 190, 100, 1)";
+            (e.currentTarget as HTMLElement).style.background = "#ff5e1a";
           }}
           onMouseLeave={(e) => {
-            (e.currentTarget as HTMLElement).style.background = "rgba(200, 170, 90, 0.85)";
+            (e.currentTarget as HTMLElement).style.background = "#1a1a18";
           }}
         >
-          Configure &amp; Inquire
+          Configure & Inquire
         </button>
       </div>
     </div>

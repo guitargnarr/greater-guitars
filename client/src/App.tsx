@@ -4,15 +4,15 @@ export default function App() {
   return (
     <>
       <Home />
-      {/* Film grain overlay — analog texture per Elite Frontend Playbook */}
+      {/* Film grain overlay — subtle zine texture */}
       <div
         style={{
           position: "fixed",
           inset: 0,
           zIndex: 9999,
           pointerEvents: "none",
-          opacity: 0.035,
-          mixBlendMode: "overlay",
+          opacity: 0.02,
+          mixBlendMode: "multiply",
         }}
       >
         <svg width="100%" height="100%">
