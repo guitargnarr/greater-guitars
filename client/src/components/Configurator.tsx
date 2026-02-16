@@ -58,9 +58,9 @@ export default function Configurator({ selectedModelId }: ConfiguratorProps) {
   const inputStyle = {
     fontFamily: '"Inter", sans-serif',
     fontSize: "0.85rem",
-    color: "#e8dcc8",
+    color: "#ebe1c8",
     background: "rgba(20, 18, 14, 0.9)",
-    border: "1px solid rgba(196, 154, 108, 0.15)",
+    border: "1px solid rgba(200, 170, 90, 0.15)",
     borderRadius: "1px",
     padding: "0.75rem 1rem",
     width: "100%",
@@ -73,7 +73,7 @@ export default function Configurator({ selectedModelId }: ConfiguratorProps) {
     fontSize: "0.7rem",
     letterSpacing: "0.2em",
     textTransform: "uppercase" as const,
-    color: "rgba(196, 154, 108, 0.5)",
+    color: "rgba(200, 170, 90, 0.5)",
     marginBottom: "0.5rem",
     display: "block",
   };
@@ -85,7 +85,7 @@ export default function Configurator({ selectedModelId }: ConfiguratorProps) {
           style={{
             fontFamily: '"DM Serif Display", serif',
             fontSize: "1.8rem",
-            color: "#e8dcc8",
+            color: "#ebe1c8",
             marginBottom: "1rem",
           }}
         >
@@ -95,7 +95,7 @@ export default function Configurator({ selectedModelId }: ConfiguratorProps) {
           style={{
             fontFamily: '"Inter", sans-serif',
             fontSize: "0.9rem",
-            color: "rgba(196, 154, 108, 0.6)",
+            color: "rgba(200, 170, 90, 0.6)",
             fontWeight: 300,
             lineHeight: 1.7,
           }}
@@ -111,7 +111,7 @@ export default function Configurator({ selectedModelId }: ConfiguratorProps) {
             cursor: "pointer",
             marginTop: "2rem",
             maxWidth: "200px",
-            border: "1px solid rgba(196, 154, 108, 0.3)",
+            border: "1px solid rgba(200, 170, 90, 0.3)",
             textAlign: "center",
           }}
         >
@@ -131,7 +131,7 @@ export default function Configurator({ selectedModelId }: ConfiguratorProps) {
             fontSize: "0.7rem",
             letterSpacing: "0.4em",
             textTransform: "uppercase",
-            color: "rgba(196, 154, 108, 0.45)",
+            color: "rgba(200, 170, 90, 0.45)",
             marginBottom: "0.75rem",
           }}
         >
@@ -141,7 +141,7 @@ export default function Configurator({ selectedModelId }: ConfiguratorProps) {
           style={{
             fontFamily: '"DM Serif Display", serif',
             fontSize: "clamp(1.8rem, 4vw, 2.5rem)",
-            color: "#e8dcc8",
+            color: "#ebe1c8",
           }}
         >
           {isCustom ? "Describe your dream guitar" : "Build yours"}
@@ -157,8 +157,8 @@ export default function Configurator({ selectedModelId }: ConfiguratorProps) {
             maxWidth: "180px",
             textAlign: "center",
             cursor: "pointer",
-            background: !isCustom ? "rgba(196, 154, 108, 0.15)" : "rgba(20, 18, 14, 0.9)",
-            borderColor: !isCustom ? "rgba(196, 154, 108, 0.3)" : "rgba(196, 154, 108, 0.1)",
+            background: !isCustom ? "rgba(200, 170, 90, 0.15)" : "rgba(20, 18, 14, 0.9)",
+            borderColor: !isCustom ? "rgba(200, 170, 90, 0.3)" : "rgba(200, 170, 90, 0.1)",
           }}
         >
           From a model
@@ -170,8 +170,8 @@ export default function Configurator({ selectedModelId }: ConfiguratorProps) {
             maxWidth: "180px",
             textAlign: "center",
             cursor: "pointer",
-            background: isCustom ? "rgba(196, 154, 108, 0.15)" : "rgba(20, 18, 14, 0.9)",
-            borderColor: isCustom ? "rgba(196, 154, 108, 0.3)" : "rgba(196, 154, 108, 0.1)",
+            background: isCustom ? "rgba(200, 170, 90, 0.15)" : "rgba(20, 18, 14, 0.9)",
+            borderColor: isCustom ? "rgba(200, 170, 90, 0.3)" : "rgba(200, 170, 90, 0.1)",
           }}
         >
           Full custom
@@ -211,8 +211,8 @@ export default function Configurator({ selectedModelId }: ConfiguratorProps) {
                           ...inputStyle,
                           width: "auto",
                           cursor: "pointer",
-                          background: bodyStyle === bs ? "rgba(196, 154, 108, 0.15)" : "rgba(20, 18, 14, 0.9)",
-                          borderColor: bodyStyle === bs ? "rgba(196, 154, 108, 0.35)" : "rgba(196, 154, 108, 0.1)",
+                          background: bodyStyle === bs ? "rgba(200, 170, 90, 0.15)" : "rgba(20, 18, 14, 0.9)",
+                          borderColor: bodyStyle === bs ? "rgba(200, 170, 90, 0.35)" : "rgba(200, 170, 90, 0.1)",
                         }}
                       >
                         {bs}
@@ -233,8 +233,8 @@ export default function Configurator({ selectedModelId }: ConfiguratorProps) {
                           ...inputStyle,
                           width: "auto",
                           cursor: "pointer",
-                          background: color === c ? "rgba(196, 154, 108, 0.15)" : "rgba(20, 18, 14, 0.9)",
-                          borderColor: color === c ? "rgba(196, 154, 108, 0.35)" : "rgba(196, 154, 108, 0.1)",
+                          background: color === c ? "rgba(200, 170, 90, 0.15)" : "rgba(20, 18, 14, 0.9)",
+                          borderColor: color === c ? "rgba(200, 170, 90, 0.35)" : "rgba(200, 170, 90, 0.1)",
                         }}
                       >
                         <span
@@ -267,8 +267,8 @@ export default function Configurator({ selectedModelId }: ConfiguratorProps) {
               onChange={(e) => setName(e.target.value)}
               placeholder="Name"
               style={inputStyle}
-              onFocus={(e) => { e.currentTarget.style.borderColor = "rgba(196, 154, 108, 0.4)"; }}
-              onBlur={(e) => { e.currentTarget.style.borderColor = "rgba(196, 154, 108, 0.15)"; }}
+              onFocus={(e) => { e.currentTarget.style.borderColor = "rgba(200, 170, 90, 0.4)"; }}
+              onBlur={(e) => { e.currentTarget.style.borderColor = "rgba(200, 170, 90, 0.15)"; }}
             />
           </div>
           <div>
@@ -279,8 +279,8 @@ export default function Configurator({ selectedModelId }: ConfiguratorProps) {
               onChange={(e) => setEmail(e.target.value)}
               placeholder="you@email.com"
               style={inputStyle}
-              onFocus={(e) => { e.currentTarget.style.borderColor = "rgba(196, 154, 108, 0.4)"; }}
-              onBlur={(e) => { e.currentTarget.style.borderColor = "rgba(196, 154, 108, 0.15)"; }}
+              onFocus={(e) => { e.currentTarget.style.borderColor = "rgba(200, 170, 90, 0.4)"; }}
+              onBlur={(e) => { e.currentTarget.style.borderColor = "rgba(200, 170, 90, 0.15)"; }}
             />
           </div>
         </div>
@@ -299,8 +299,8 @@ export default function Configurator({ selectedModelId }: ConfiguratorProps) {
                 : "Anything else Alex should know about what you're looking for..."
             }
             style={{ ...inputStyle, resize: "vertical" }}
-            onFocus={(e) => { e.currentTarget.style.borderColor = "rgba(196, 154, 108, 0.4)"; }}
-            onBlur={(e) => { e.currentTarget.style.borderColor = "rgba(196, 154, 108, 0.15)"; }}
+            onFocus={(e) => { e.currentTarget.style.borderColor = "rgba(200, 170, 90, 0.4)"; }}
+            onBlur={(e) => { e.currentTarget.style.borderColor = "rgba(200, 170, 90, 0.15)"; }}
           />
         </div>
 
@@ -309,16 +309,16 @@ export default function Configurator({ selectedModelId }: ConfiguratorProps) {
           <div
             className="flex items-center justify-between px-4 py-3"
             style={{
-              background: "rgba(196, 154, 108, 0.05)",
+              background: "rgba(200, 170, 90, 0.05)",
               borderRadius: "1px",
-              border: "1px solid rgba(196, 154, 108, 0.08)",
+              border: "1px solid rgba(200, 170, 90, 0.08)",
             }}
           >
             <span
               style={{
                 fontFamily: '"Inter", sans-serif',
                 fontSize: "0.8rem",
-                color: "rgba(196, 154, 108, 0.5)",
+                color: "rgba(200, 170, 90, 0.5)",
               }}
             >
               {selectedModel.name} / {bodyStyle} / {color}
@@ -327,7 +327,7 @@ export default function Configurator({ selectedModelId }: ConfiguratorProps) {
               style={{
                 fontFamily: '"DM Serif Display", serif',
                 fontSize: "1.2rem",
-                color: "#e8dcc8",
+                color: "#ebe1c8",
               }}
             >
               Starting at ${selectedModel.basePrice.toLocaleString()}
@@ -346,8 +346,8 @@ export default function Configurator({ selectedModelId }: ConfiguratorProps) {
             fontWeight: 500,
             color: "#0c0a08",
             background: (!name || !email || (!isCustom && !modelId))
-              ? "rgba(196, 154, 108, 0.3)"
-              : "rgba(196, 154, 108, 0.9)",
+              ? "rgba(200, 170, 90, 0.3)"
+              : "rgba(200, 170, 90, 0.9)",
             border: "none",
             padding: "1rem 2rem",
             borderRadius: "1px",
@@ -364,7 +364,7 @@ export default function Configurator({ selectedModelId }: ConfiguratorProps) {
           style={{
             fontFamily: '"Inter", sans-serif',
             fontSize: "0.7rem",
-            color: "rgba(196, 154, 108, 0.3)",
+            color: "rgba(200, 170, 90, 0.3)",
             fontWeight: 300,
           }}
         >

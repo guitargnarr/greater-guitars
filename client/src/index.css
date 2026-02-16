@@ -15,11 +15,11 @@
   --color-border: var(--border);
   --font-display: "DM Serif Display", serif;
   --font-body: "Inter", sans-serif;
-  /* Warm wood palette */
+  /* Antique gold palette — derived from painted body photo */
   --color-wood: oklch(0.55 0.08 55);
   --color-grain: oklch(0.40 0.06 50);
-  --color-cream: oklch(0.92 0.02 80);
-  --color-copper: oklch(0.62 0.12 45);
+  --color-cream: oklch(0.92 0.02 85);
+  --color-gold: oklch(0.72 0.12 85);
 }
 
 :root {

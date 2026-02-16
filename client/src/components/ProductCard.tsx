@@ -1,3 +1,4 @@
+import { useState } from "react";
 import type { GuitarModel } from "@/lib/products";
 
 interface ProductCardProps {
@@ -6,27 +7,74 @@ interface ProductCardProps {
 }
 
 export default function ProductCard({ model, onSelect }: ProductCardProps) {
+  const [imgIdx, setImgIdx] = useState(0);
+  const hasImages = model.images.length > 0;
+
   return (
     <div
       className="group relative flex flex-col h-full"
       style={{
         background: "rgba(20, 18, 14, 0.8)",
-        border: "1px solid rgba(196, 154, 108, 0.08)",
+        border: "1px solid rgba(200, 170, 90, 0.08)",
         borderRadius: "2px",
         overflow: "hidden",
         transition: "border-color 0.4s ease, transform 0.4s ease",
       }}
       onMouseEnter={(e) => {
-        (e.currentTarget as HTMLElement).style.borderColor = "rgba(196, 154, 108, 0.2)";
+        (e.currentTarget as HTMLElement).style.borderColor = "rgba(200, 170, 90, 0.2)";
         (e.currentTarget as HTMLElement).style.transform = "translateY(-4px)";
       }}
       onMouseLeave={(e) => {
-        (e.currentTarget as HTMLElement).style.borderColor = "rgba(196, 154, 108, 0.08)";
+        (e.currentTarget as HTMLElement).style.borderColor = "rgba(200, 170, 90, 0.08)";
         (e.currentTarget as HTMLElement).style.transform = "translateY(0)";
       }}
     >
-      {/* Color swatches as header accent */}
-      <div className="flex gap-2 px-6 pt-6">
+      {/* Photo */}
+      {hasImages && (
+        <div style={{ position: "relative", aspectRatio: "4/3", overflow: "hidden" }}>
+          <img
+            src={model.images[imgIdx]}
+            alt={`${model.name} — ${imgIdx + 1} of ${model.images.length}`}
+            style={{
+              width: "100%",
+              height: "100%",
+              objectFit: "cover",
+              display: "block",
+            }}
+          />
+          {model.images.length > 1 && (
+            <div
+              className="flex gap-1.5 justify-center"
+              style={{
+                position: "absolute",
+                bottom: "0.75rem",
+                left: 0,
+                right: 0,
+              }}
+            >
+              {model.images.map((_, i) => (
+                <button
+                  key={i}
+                  onClick={(e) => { e.stopPropagation(); setImgIdx(i); }}
+                  style={{
+                    width: "0.5rem",
+                    height: "0.5rem",
+                    borderRadius: "50%",
+                    background: i === imgIdx ? "rgba(235, 225, 200, 0.9)" : "rgba(235, 225, 200, 0.3)",
+                    border: "none",
+                    cursor: "pointer",
+                    padding: 0,
+                    transition: "background 0.2s ease",
+                  }}
+                />
+              ))}
+            </div>
+          )}
+        </div>
+      )}
+
+      {/* Color swatches */}
+      <div className="flex gap-2 px-6 pt-4">
         {model.colors.map((color) => (
           <div
             key={color}
@@ -50,7 +98,7 @@ export default function ProductCard({ model, onSelect }: ProductCardProps) {
             fontSize: "0.65rem",
             letterSpacing: "0.3em",
             textTransform: "uppercase",
-            color: "rgba(196, 154, 108, 0.4)",
+            color: "rgba(200, 170, 90, 0.4)",
             marginBottom: "0.5rem",
           }}
         >
@@ -61,7 +109,7 @@ export default function ProductCard({ model, onSelect }: ProductCardProps) {
           style={{
             fontFamily: '"DM Serif Display", serif',
             fontSize: "1.6rem",
-            color: "#e8dcc8",
+            color: "#ebe1c8",
             marginBottom: "0.25rem",
           }}
         >
@@ -72,7 +120,7 @@ export default function ProductCard({ model, onSelect }: ProductCardProps) {
           style={{
             fontFamily: '"DM Serif Display", serif',
             fontSize: "1.1rem",
-            color: "rgba(196, 154, 108, 0.7)",
+            color: "rgba(200, 170, 90, 0.7)",
             marginBottom: "1.25rem",
           }}
         >
@@ -84,7 +132,7 @@ export default function ProductCard({ model, onSelect }: ProductCardProps) {
             fontFamily: '"Inter", sans-serif',
             fontSize: "0.85rem",
             lineHeight: 1.75,
-            color: "rgba(196, 154, 108, 0.5)",
+            color: "rgba(200, 170, 90, 0.5)",
             fontWeight: 300,
             marginBottom: "1.5rem",
           }}
@@ -100,15 +148,15 @@ export default function ProductCard({ model, onSelect }: ProductCardProps) {
               style={{
                 fontFamily: '"Inter", sans-serif',
                 fontSize: "0.75rem",
-                color: "rgba(196, 154, 108, 0.4)",
+                color: "rgba(200, 170, 90, 0.4)",
                 padding: "0.3rem 0",
-                borderBottom: "1px solid rgba(196, 154, 108, 0.05)",
+                borderBottom: "1px solid rgba(200, 170, 90, 0.05)",
                 display: "flex",
                 alignItems: "center",
                 gap: "0.5rem",
               }}
             >
-              <span style={{ color: "rgba(196, 154, 108, 0.25)", fontSize: "0.5rem" }}>&#9670;</span>
+              <span style={{ color: "rgba(200, 170, 90, 0.25)", fontSize: "0.5rem" }}>&#9670;</span>
               {f}
             </li>
           ))}
@@ -119,7 +167,7 @@ export default function ProductCard({ model, onSelect }: ProductCardProps) {
           style={{
             fontFamily: '"Inter", sans-serif',
             fontSize: "0.7rem",
-            color: "rgba(196, 154, 108, 0.3)",
+            color: "rgba(200, 170, 90, 0.3)",
             marginBottom: "1.5rem",
           }}
         >
@@ -135,7 +183,7 @@ export default function ProductCard({ model, onSelect }: ProductCardProps) {
             textTransform: "uppercase",
             fontWeight: 500,
             color: "#0c0a08",
-            background: "rgba(196, 154, 108, 0.85)",
+            background: "rgba(200, 170, 90, 0.85)",
             border: "none",
             padding: "0.85rem 1.5rem",
             borderRadius: "1px",
@@ -144,10 +192,10 @@ export default function ProductCard({ model, onSelect }: ProductCardProps) {
             width: "100%",
           }}
           onMouseEnter={(e) => {
-            (e.currentTarget as HTMLElement).style.background = "rgba(212, 165, 116, 1)";
+            (e.currentTarget as HTMLElement).style.background = "rgba(220, 190, 100, 1)";
           }}
           onMouseLeave={(e) => {
-            (e.currentTarget as HTMLElement).style.background = "rgba(196, 154, 108, 0.85)";
+            (e.currentTarget as HTMLElement).style.background = "rgba(200, 170, 90, 0.85)";
           }}
         >
           Configure &amp; Inquire

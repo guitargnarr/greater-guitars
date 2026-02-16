@@ -8,6 +8,7 @@ export interface GuitarModel {
   colors: string[];
   colorHexes: Record<string, string>;
   features: string[];
+  images: string[];
 }
 
 export const MODELS: GuitarModel[] = [
@@ -27,6 +28,7 @@ export const MODELS: GuitarModel[] = [
       "Handwound pickups",
       "Bone nut",
     ],
+    images: ["/guitars/danny-boy.jpg", "/guitars/danny-boy-neck.jpg", "/guitars/danny-boy-headstock.jpg"],
   },
   {
     id: "projector",
@@ -44,6 +46,7 @@ export const MODELS: GuitarModel[] = [
       "Coil-split switching",
       "Stainless steel frets",
     ],
+    images: ["/guitars/projector.jpg"],
   },
   {
     id: "dantom",
@@ -67,6 +70,7 @@ export const MODELS: GuitarModel[] = [
       "Nitrocellulose finish",
       "Lifetime setup adjustments",
     ],
+    images: ["/guitars/dantom.jpg"],
   },
 ];
 

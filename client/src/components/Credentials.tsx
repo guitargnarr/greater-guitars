@@ -16,7 +16,7 @@ export default function Credentials() {
             fontSize: "0.7rem",
             letterSpacing: "0.4em",
             textTransform: "uppercase",
-            color: "rgba(196, 154, 108, 0.45)",
+            color: "rgba(200, 170, 90, 0.45)",
             marginBottom: "0.75rem",
           }}
         >
@@ -26,7 +26,7 @@ export default function Credentials() {
           style={{
             fontFamily: '"DM Serif Display", serif',
             fontSize: "clamp(2rem, 5vw, 3rem)",
-            color: "#e8dcc8",
+            color: "#ebe1c8",
           }}
         >
           Alex MacLeod
@@ -40,7 +40,7 @@ export default function Credentials() {
             fontFamily: '"Inter", sans-serif',
             fontSize: "0.95rem",
             lineHeight: 1.9,
-            color: "rgba(196, 154, 108, 0.6)",
+            color: "rgba(200, 170, 90, 0.6)",
             fontWeight: 300,
             textAlign: "center",
           }}
@@ -65,7 +65,7 @@ export default function Credentials() {
             style={{
               padding: "2rem",
               background: "rgba(20, 18, 14, 0.5)",
-              border: "1px solid rgba(196, 154, 108, 0.06)",
+              border: "1px solid rgba(200, 170, 90, 0.06)",
               borderRadius: "2px",
             }}
           >
@@ -73,7 +73,7 @@ export default function Credentials() {
               style={{
                 fontFamily: '"DM Serif Display", serif',
                 fontSize: "1.4rem",
-                color: "#e8dcc8",
+                color: "#ebe1c8",
                 marginBottom: "0.25rem",
               }}
             >
@@ -85,7 +85,7 @@ export default function Credentials() {
                 fontSize: "0.65rem",
                 letterSpacing: "0.25em",
                 textTransform: "uppercase",
-                color: "rgba(196, 154, 108, 0.45)",
+                color: "rgba(200, 170, 90, 0.45)",
                 marginBottom: "0.75rem",
               }}
             >
@@ -95,7 +95,7 @@ export default function Credentials() {
               style={{
                 fontFamily: '"Inter", sans-serif',
                 fontSize: "0.8rem",
-                color: "rgba(196, 154, 108, 0.4)",
+                color: "rgba(200, 170, 90, 0.4)",
                 fontWeight: 300,
                 lineHeight: 1.6,
               }}
@@ -112,7 +112,7 @@ export default function Credentials() {
           style={{
             fontFamily: '"DM Serif Display", serif',
             fontSize: "1.5rem",
-            color: "#e8dcc8",
+            color: "#ebe1c8",
             marginBottom: "0.5rem",
           }}
         >
@@ -122,7 +122,7 @@ export default function Credentials() {
           style={{
             fontFamily: '"Inter", sans-serif',
             fontSize: "0.85rem",
-            color: "rgba(196, 154, 108, 0.45)",
+            color: "rgba(200, 170, 90, 0.45)",
             fontWeight: 300,
           }}
         >
@@ -138,7 +138,7 @@ export default function Credentials() {
             style={{
               padding: "2rem 1.5rem",
               background: "rgba(20, 18, 14, 0.3)",
-              border: "1px dashed rgba(196, 154, 108, 0.1)",
+              border: "1px dashed rgba(200, 170, 90, 0.1)",
               borderRadius: "2px",
             }}
           >
@@ -149,15 +149,15 @@ export default function Credentials() {
                 width: "3.5rem",
                 height: "3.5rem",
                 borderRadius: "50%",
-                background: "rgba(196, 154, 108, 0.08)",
-                border: "1px solid rgba(196, 154, 108, 0.1)",
+                background: "rgba(200, 170, 90, 0.08)",
+                border: "1px solid rgba(200, 170, 90, 0.1)",
               }}
             />
             <p
               style={{
                 fontFamily: '"DM Serif Display", serif',
                 fontSize: "0.95rem",
-                color: "rgba(232, 220, 200, 0.35)",
+                color: "rgba(235, 225, 200, 0.35)",
                 marginBottom: "0.25rem",
               }}
             >
@@ -167,7 +167,7 @@ export default function Credentials() {
               style={{
                 fontFamily: '"Inter", sans-serif',
                 fontSize: "0.7rem",
-                color: "rgba(196, 154, 108, 0.25)",
+                color: "rgba(200, 170, 90, 0.25)",
                 fontWeight: 300,
               }}
             >
@@ -182,7 +182,7 @@ export default function Credentials() {
         style={{
           fontFamily: '"Inter", sans-serif',
           fontSize: "0.7rem",
-          color: "rgba(196, 154, 108, 0.25)",
+          color: "rgba(200, 170, 90, 0.25)",
           fontStyle: "italic",
           fontWeight: 300,
         }}
