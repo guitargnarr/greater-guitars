@@ -62,10 +62,10 @@
   content: '';
   position: absolute;
   inset: 0;
-  opacity: 0.04;
+  opacity: 0.10;
   pointer-events: none;
-  background-image: radial-gradient(circle, #1a1a18 0.5px, transparent 0.5px);
-  background-size: 8px 8px;
+  background-image: radial-gradient(circle, #1a1a18 0.8px, transparent 0.8px);
+  background-size: 10px 10px;
 }
 
 /* Dark halftone for dark sections */

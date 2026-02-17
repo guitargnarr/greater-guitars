@@ -10,7 +10,7 @@
  * 6. Proof (gallery + credentials) — real work, real players
  */
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
 import GrainDripHero from "@/components/GrainDripHero";
 import Logo from "@/components/Logo";
 import ProductCard from "@/components/ProductCard";
@@ -51,6 +51,81 @@ function SectionReveal({ children, className = "", delay = 0 }: { children: Reac
   );
 }
 
+const SECTION_IDS = ["hero", "philosophy", "process", "models", "configure", "gallery", "videos", "about"];
+
+function ScrollNextButton() {
+  const [visible, setVisible] = useState(true);
+
+  const scrollToNext = useCallback(() => {
+    const scrollY = window.scrollY;
+    const vh = window.innerHeight;
+    for (const id of SECTION_IDS) {
+      const el = document.getElementById(id);
+      if (el) {
+        const top = el.getBoundingClientRect().top + scrollY;
+        if (top > scrollY + 60) {
+          el.scrollIntoView({ behavior: "smooth", block: "start" });
+          return;
+        }
+      }
+    }
+    // Past all sections — scroll to footer
+    window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
+  }, []);
+
+  useEffect(() => {
+    const onScroll = () => {
+      const atBottom = window.innerHeight + window.scrollY >= document.body.scrollHeight - 200;
+      setVisible(!atBottom);
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  if (!visible) return null;
+
+  return (
+    <button
+      onClick={scrollToNext}
+      aria-label="Scroll to next section"
+      style={{
+        position: "fixed",
+        bottom: "2rem",
+        right: "2rem",
+        zIndex: 9990,
+        width: "36px",
+        height: "36px",
+        background: "rgba(26, 26, 24, 0.6)",
+        border: "1px solid rgba(242, 239, 232, 0.15)",
+        borderRadius: "50%",
+        cursor: "pointer",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        transition: "background 0.15s ease, border-color 0.15s ease",
+        backdropFilter: "blur(8px)",
+        WebkitBackdropFilter: "blur(8px)",
+      }}
+      onMouseEnter={(e) => {
+        e.currentTarget.style.background = "rgba(255, 94, 26, 0.8)";
+        e.currentTarget.style.borderColor = "rgba(255, 94, 26, 0.6)";
+      }}
+      onMouseLeave={(e) => {
+        e.currentTarget.style.background = "rgba(26, 26, 24, 0.6)";
+        e.currentTarget.style.borderColor = "rgba(242, 239, 232, 0.15)";
+      }}
+    >
+      <svg
+        width="14" height="14" viewBox="0 0 24 24" fill="none"
+        stroke="#f2efe8" strokeWidth="2"
+        strokeLinecap="round" strokeLinejoin="round"
+      >
+        <path d="M7 13l5 5 5-5" />
+      </svg>
+    </button>
+  );
+}
+
 export default function Home() {
   const [selectedModel, setSelectedModel] = useState<string | null>(null);
   const [lightboxSrc, setLightboxSrc] = useState<string | null>(null);
@@ -69,6 +144,7 @@ export default function Home() {
       {/* HERO — Dark, ink drip, punk energy             */}
       {/* ═══════════════════════════════════════════════ */}
       <section
+        id="hero"
         className="relative flex items-center justify-center overflow-hidden"
         style={{ height: "100dvh", minHeight: "600px", background: "#1a1a18" }}
       >
@@ -83,8 +159,8 @@ export default function Home() {
           }}
         />
 
-        {/* Ink drip animation */}
-        <GrainDripHero />
+        {/* Ink drip animation — disabled per client preference */}
+        {/* <GrainDripHero /> */}
 
         {/* Brand overlay */}
         <div className="relative z-10 text-center px-6 max-w-4xl">
@@ -170,7 +246,7 @@ export default function Home() {
       {/* ═══════════════════════════════════════════════ */}
       {/* PHILOSOPHY — Editorial two-column on newsprint */}
       {/* ═══════════════════════════════════════════════ */}
-      <section className="halftone-bg relative py-24 px-6" style={{ background: "#f2efe8" }}>
+      <section id="philosophy" className="halftone-bg relative py-24 px-6" style={{ background: "#f2efe8" }}>
         <div className="max-w-5xl mx-auto">
           <SectionReveal>
             <div className="grid md:grid-cols-2 gap-16 items-start">
@@ -244,7 +320,7 @@ export default function Home() {
       {/* ═══════════════════════════════════════════════ */}
       {/* THE PROCESS — Dark section, numbered steps     */}
       {/* ═══════════════════════════════════════════════ */}
-      <section className="halftone-bg halftone-dark relative py-24 px-6" style={{ background: "#1a1a18" }}>
+      <section id="process" className="halftone-bg halftone-dark relative py-24 px-6" style={{ background: "#1a1a18" }}>
         <div className="max-w-5xl mx-auto">
           <SectionReveal>
             <div className="text-center mb-20">
@@ -471,7 +547,7 @@ export default function Home() {
       {/* ═══════════════════════════════════════════════ */}
       {/* GALLERY — Full-bleed photo grid                */}
       {/* ═══════════════════════════════════════════════ */}
-      <section className="relative py-24 px-6" style={{ background: "#f2efe8" }}>
+      <section id="gallery" className="relative py-24 px-6" style={{ background: "#f2efe8" }}>
         <div className="max-w-5xl mx-auto">
           <SectionReveal>
             <div className="text-center mb-12">
@@ -589,6 +665,9 @@ export default function Home() {
           <img src={lightboxSrc} alt="Gallery detail" />
         </div>
       )}
+
+      {/* Section scroll indicator */}
+      <ScrollNextButton />
     </div>
   );
 }
